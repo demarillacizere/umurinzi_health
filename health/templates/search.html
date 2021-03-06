@@ -16,18 +16,15 @@
     .label a{
         color:#562B0C;
     }
-    .row{
-        grid-gap:20px;
-    }
+   
     footer{
         position:relative;
     }
-    .card{
+    .col-lg-3{
         font-weight: normal;
         border-radius:20px;
-        padding: 0;
+        padding: 10px;
         color:#562B0C;
-        width:80px;
     }
     .card-body{
         background-color: azure;
@@ -63,13 +60,14 @@
     <div class='row '>
       
         {% for pharmacy in nearest %}
-        <div class='col-lg-3 card text-center'>
+        <div class='col-lg-3 text-center'>
+               
             <img class="card-img-top" src="https://media.sciencephoto.com/image/m6400280/800wm" width='100%' alt="Card image">
-            <div class='card-body'>
-                <h4><b>{{pharmacy.name}}</b></h4><br>
-                <span>Located at {{pharmacy.location}}</span><br><br>
-                <a href='/pharmacy/{{pharmacy.id}}' class='btn'> View Details</a>
-            </div>
+        <div class='card-body'>
+            <h5><b>{{pharmacy.name}}</b></h5>
+            <span>Located at {{pharmacy.location}}</span><br><br>
+            <a href='/pharmacy/{{pharmacy.id}}' class='btn'> View Details</a>
+        </div>
         </div>
         {% endfor%}
     </div>
@@ -77,14 +75,17 @@
     <h5 class='text-center'><b>Other Pharmacies with {{drug.name}}</b></h5><br>
     <div class='row'>
         {% for pharmacy in others %}
-            <div class='col-lg-3 card text-center'>
-                <img class="card-img-top" src="https://media.sciencephoto.com/image/m6400280/800wm" width='100%' alt="Card image">
+            <div class='col-lg-3 text-center'>
+               
+                    <img class="card-img-top" src="https://media.sciencephoto.com/image/m6400280/800wm" width='100%' alt="Card image">
                 <div class='card-body'>
                     <h5><b>{{pharmacy.name}}</b></h5>
                     <span>Located at {{pharmacy.location}}</span><br><br>
                     <a href='/pharmacy/{{pharmacy.id}}' class='btn'> View Details</a>
                 </div>
                 </div>
+                
+                
             {% endfor%}
     </div><br><br><br><br>
     {%else%}
