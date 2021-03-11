@@ -4,22 +4,14 @@
 
 {{block.super}}
  <style>
-    .label{
-        color:white;
-
-    }
     body{
-        font-weight:bolder;
-        background-color: rgba(32, 117, 151, 0.849);
-        font-family: 'Vollkorn', serif;
-    }
-    .label a{
+    background-color:rgb(211, 211, 211);
+    background-repeat:no-repeat;
+    background-size:cover;
+    font-family: 'Vollkorn', serif;
         color:#562B0C;
-    }
-   
-    footer{
-        position:relative;
-    }
+    
+  }
     .col-lg-3{
         font-weight: normal;
         border-radius:20px;
@@ -27,74 +19,87 @@
         color:#562B0C;
     }
     .card-body{
-        background-color: azure;
+        background-color: white;
     }
     .btn{
-        background-color: skyblue;
+        background-color: #562B0C;
+        border-radius: 15px;
+        color: white;
+    }
+    .row1{
+        background: linear-gradient(90deg, #3a1e08 75%, #f7f7f7 50%);
+        padding:15vh 0;
+        display: flex;
+        justify-content: flex-end;
+        color:white;
+  
+    }
+    .row2{
+        display:flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-wrap: wrap-reverse;
     }
   
 </style>
-<div class='label'><br><br>
-    <div class='container'>
-    <div class=" container row">
-        <div class='col-md-1'></div>
-        {% if drug %}
-        <div class="col-md-5" >
-            <div style="text-align:center">
-                <img src="{{drug.pic.url}}" width='100%'>
-            </div>
-        </div>
-        <div class="col-md-4 col-lg-4">
-            <div class="card-1" >
-                <div class="card-text" style="padding: 20px;">
-                    <h5><strong>Name:</strong> {{drug.name}}</h5>
-                    <h5><strong>Description:</strong> {{drug.description}}</h5>
-                </div>
-
-            </div>
-
-        </div>
-    </div><br><br>
-    {% if nearest %}
-    <h5 class='text-center'><b>Pharmacies with {{drug.name}} near you</b></h5><br>
-    <div class='row '>
-      
-        {% for pharmacy in nearest %}
-        <div class='col-lg-3 text-center'>
-               
-            <img class="card-img-top" src="https://media.sciencephoto.com/image/m6400280/800wm" width='100%' alt="Card image">
-        <div class='card-body'>
-            <h5><b>{{pharmacy.name}}</b></h5>
-            <span>Located at {{pharmacy.location}}</span><br><br>
-            <a href='/pharmacy/{{pharmacy.id}}' class='btn'> View Details</a>
-        </div>
-        </div>
-        {% endfor%}
-    </div>
-    {% endif %}<br>
-    <h5 class='text-center'><b>Other Pharmacies with {{drug.name}}</b></h5><br>
+<div class='container'><br><br>
     <div class='row'>
-        {% for pharmacy in others %}
-            <div class='col-lg-3 text-center'>
-               
-                    <img class="card-img-top" src="https://media.sciencephoto.com/image/m6400280/800wm" width='100%' alt="Card image">
-                <div class='card-body'>
-                    <h5><b>{{pharmacy.name}}</b></h5>
-                    <span>Located at {{pharmacy.location}}</span><br><br>
-                    <a href='/pharmacy/{{pharmacy.id}}' class='btn'> View Details</a>
-                </div>
-                </div>
+        <div class='col-md-2'></div>
+        <div class='col-md-9'>         
+            {% if drug %}
+            <div class="row row1 ml-5 mr-5 m-5">   
+                <div class='row2 col-md-12 row ' style='padding:0px;'>
+                    <div class='col-md-1'></div>
+                    <div class='col-md-6 text-right'>
+                        <h1><strong>{{drug.name}}</strong></h1>
+                        <p>{{drug.description}}</p>
+                    </div>
+                    <div class='col-md-5'>
+                        <img src="{{drug.pic.url}}" width='100%' height='200px;'>
+                    </div>
+    
+            </div>
+        </div></div></div><br><br>
+        {% if nearest %}
+        <h5><b>Nearest pharmacies with {{drug.name}}</b></h5><br>
+        <div class='row '>
+        
+            {% for pharmacy in nearest %}
+            <div class='col-lg-3'>
                 
-                
+                <img class="card-img-top" src="{{pharmacy.pharm_pic.url}}" width='100%'height='180px' alt="Card image">
+            <div class='card-body'>
+                <h5><b>{{pharmacy.name}}</b></h5>
+                <span>Located at {{pharmacy.location}}</span><br><br>
+                <a href='/pharmacy/{{pharmacy.id}}' class='btn btn-dark'> View Details</a>
+            </div>
+            </div>
             {% endfor%}
-    </div><br><br><br><br>
-    {%else%}
-    {% if message %}
-    <h4>No results found for {{message}}</h4>
-    {% else %}
-    <h4>You havent't searches for any medication yet</h4>
-    {% endif %}
-    {% endif %}
-</div>
+        </div>
+        {% endif %}<br>
+        <h5 ><b>Other Pharmacies with {{drug.name}}</b></h5><br>
+        <div class='row'>
+            {% for pharmacy in others %}
+                <div class='col-lg-3 text-center'>
+                
+                        <img class="card-img-top" src="{{pharmacy.pharm_pic.url}}" width='100%' height='180px' alt="Card image">
+                    <div class='card-body'>
+                        <h5><b>{{pharmacy.name}}</b></h5>
+                        <span>Located at {{pharmacy.location}}</span><br><br>
+                        <a href='/pharmacy/{{pharmacy.id}}' class='btn btn-dark'> View Details</a>
+                    </div>
+                    </div>
+                    
+                    
+                {% endfor%}
+        </div><br><br><br><br>
+        {%else%}
+        {% if message %}
+        <h4>No results found for {{message}}</h4>
+        {% else %}
+        <h4>You haven't searched for any medication yet</h4>
+        {% endif %}
+        {% endif %}
+</div></div>
 </div>
 {% endblock %}

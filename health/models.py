@@ -21,6 +21,7 @@ class Pharmacy(models.Model):
     insurance = models.ManyToManyField(Insurance)
     direction = models.CharField(max_length=255)
     contact = models.PositiveIntegerField()
+    pharm_pic=models.ImageField(upload_to='pictures/',default='pictures/default.png')
 
     def create_pharm(self):
         self.save()
@@ -80,7 +81,7 @@ class Profile(models.Model):
     first_name=models.CharField(max_length=30)
     last_name=models.CharField(max_length=30)
     email=models.EmailField()
-    location = models.OneToOneField(Location, on_delete=models.CASCADE, null=True)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, null=True)
 
     def save_profile(self):
         self.save()
@@ -89,7 +90,7 @@ class Profile(models.Model):
         self.delete()
 
     def __str__(self):
-        return f'{self.user.username} Profile'
+        return f'{self.user.username}'
 
     class Meta:
         db_table = 'profile'

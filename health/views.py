@@ -13,6 +13,7 @@ from django.contrib.auth import authenticate,login,logout
 @login_required(login_url='/accounts/login/')
 def index(request):
     profile = Profile.objects.get(user=request.user)
+    print(profile.user)
     locations = Location.objects.all()
     context = {
         'locations':locations,
