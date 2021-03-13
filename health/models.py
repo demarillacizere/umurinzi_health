@@ -109,7 +109,7 @@ class Profile(models.Model):
     def save_profile(self):
         self.save()
 
-    class Activity(models.Model):                                                   
+class Activity(models.Model):                                                   
         owner = models.ForeignKey(User,blank = True, null = True, on_delete=models.CASCADE)               
         name = models.CharField(max_length = 100,blank = False)                 
         about = models.TextField(max_length = 500, blank = False)               
