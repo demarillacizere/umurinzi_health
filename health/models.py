@@ -9,12 +9,12 @@ class Location(models.Model):
 
     def __str__(self):
         return self.name
-class Locate(models.Model):                                                   
-        name = models.CharField(max_length = 100, blank = True)                 
-        coords = models.PointField()
+# class Locate(models.Model):                                                   
+#         name = models.CharField(max_length = 100, blank = True)                 
+#         coords = models.PointField()
 
-        def __str__(self):
-            return self.name  
+#         def __str__(self):
+#             return self.name  
 class Insurance(models.Model):
     name=models.CharField(max_length=50)
 
@@ -86,7 +86,7 @@ class Profile(models.Model):
     last_name=models.CharField(max_length=30)
     email=models.EmailField()
     location = models.ForeignKey(Location, on_delete=models.CASCADE, null=True)
-    locate = models.ForeignKey(Locate, blank = True, null = True, on_delete=models.CASCADE) 
+    # locate = models.ForeignKey(Locate, blank = True, null = True, on_delete=models.CASCADE) 
     def save_profile(self):
         self.save()
 
@@ -109,15 +109,15 @@ class Profile(models.Model):
     def save_profile(self):
         self.save()
 
-class Activity(models.Model):                                                   
-        owner = models.ForeignKey(User,blank = True, null = True, on_delete=models.CASCADE)               
-        name = models.CharField(max_length = 100,blank = False)                 
-        about = models.TextField(max_length = 500, blank = False)               
-        location = models.ForeignKey(Location, blank = True, null = True, on_delete=models.CASCADE)       
-        pharmacy = models.ManyToManyField(Pharmacy, blank = True)               
-        status = models.BooleanField(default = False)                           
-        deleted = models.BooleanField(default = False)                          
-        createdAt = models.DateTimeField(auto_now_add=True)                     
+# class Activity(models.Model):                                                   
+#         owner = models.ForeignKey(User,blank = True, null = True, on_delete=models.CASCADE)               
+#         name = models.CharField(max_length = 100,blank = False)                 
+#         about = models.TextField(max_length = 500, blank = False)               
+#         location = models.ForeignKey(Location, blank = True, null = True, on_delete=models.CASCADE)       
+#         pharmacy = models.ManyToManyField(Pharmacy, blank = True)               
+#         status = models.BooleanField(default = False)                           
+#         deleted = models.BooleanField(default = False)                          
+#         createdAt = models.DateTimeField(auto_now_add=True)                     
 
-        def __unicode__(self):                                                  
-                return self.name
+#         def __unicode__(self):                                                  
+#                 return self.name
