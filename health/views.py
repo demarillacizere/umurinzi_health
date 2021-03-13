@@ -107,5 +107,5 @@ def profile(request):
         'form':form,
         'profile':profile,
     }
-    return render(request,"profile/profile.html",context=context)
+    return render(request,"profile.html",context=context)
 

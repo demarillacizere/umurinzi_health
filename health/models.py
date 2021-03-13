@@ -3,13 +3,18 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 from django.db.models.signals import post_save
 import datetime as dt
-
+from django.contrib.gis.db import models  
 class Location(models.Model):
     name=models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
+class Locate(models.Model):                                                   
+        name = models.CharField(max_length = 100, blank = True)                 
+        coords = models.PointField()
 
+        def __str__(self):
+            return self.name  
 class Insurance(models.Model):
     name=models.CharField(max_length=50)
 
@@ -56,7 +61,6 @@ class Pharmacy(models.Model):
 class Drug(models.Model):
     name=models.CharField(max_length=30)
     description = models.CharField(max_length=250)
-    # price = models.PositiveIntegerField()
     pic=models.ImageField(upload_to='pictures/')
     pharmacy=models.ManyToManyField(Pharmacy)
 
@@ -77,12 +81,12 @@ class Drug(models.Model):
 
 class Profile(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_pic=models.ImageField(upload_to='profiles/',default='profiles/default.png')
+    profile_pic=models.ImageField(upload_to='pictures/',default='profiles/default.png')
     first_name=models.CharField(max_length=30)
     last_name=models.CharField(max_length=30)
     email=models.EmailField()
     location = models.ForeignKey(Location, on_delete=models.CASCADE, null=True)
-
+    locate = models.ForeignKey(Locate, blank = True, null = True, on_delete=models.CASCADE) 
     def save_profile(self):
         self.save()
 
@@ -104,3 +108,16 @@ class Profile(models.Model):
 
     def save_profile(self):
         self.save()
+
+    class Activity(models.Model):                                                   
+        owner = models.ForeignKey(User,blank = True, null = True, on_delete=models.CASCADE)               
+        name = models.CharField(max_length = 100,blank = False)                 
+        about = models.TextField(max_length = 500, blank = False)               
+        location = models.ForeignKey(Location, blank = True, null = True, on_delete=models.CASCADE)       
+        pharmacy = models.ManyToManyField(Pharmacy, blank = True)               
+        status = models.BooleanField(default = False)                           
+        deleted = models.BooleanField(default = False)                          
+        createdAt = models.DateTimeField(auto_now_add=True)                     
+
+        def __unicode__(self):                                                  
+                return self.name

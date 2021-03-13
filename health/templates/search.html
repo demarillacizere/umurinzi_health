@@ -9,25 +9,24 @@
     background-repeat:no-repeat;
     background-size:cover;
     font-family: 'Vollkorn', serif;
-        color:#562B0C;
+        color:black;
     
   }
     .col-lg-3{
         font-weight: normal;
         border-radius:20px;
         padding: 10px;
-        color:#562B0C;
+        color:black;
     }
     .card-body{
         background-color: white;
     }
     .btn{
-        background-color: #562B0C;
         border-radius: 15px;
         color: white;
     }
     .row1{
-        background: linear-gradient(90deg, #3a1e08 75%, #f7f7f7 50%);
+        background: linear-gradient(90deg, #115c58 73%, #f8f0f0 50%);
         padding:15vh 0;
         display: flex;
         justify-content: flex-end;
@@ -40,17 +39,20 @@
         justify-content: flex-end;
         flex-wrap: wrap-reverse;
     }
-  
+  p{
+    font-family:'Shippori Mincho B1', serif;;
+    font-size:"24px";
+  }
 </style>
 <div class='container'><br><br>
     <div class='row'>
-        <div class='col-md-2'></div>
+        <div class='col-md-1'></div>
         <div class='col-md-9'>         
             {% if drug %}
             <div class="row row1 ml-5 mr-5 m-5">   
                 <div class='row2 col-md-12 row ' style='padding:0px;'>
                     <div class='col-md-1'></div>
-                    <div class='col-md-6 text-right'>
+                    <div class='col-md-6 text-left'>
                         <h1><strong>{{drug.name}}</strong></h1>
                         <p>{{drug.description}}</p>
                     </div>
