@@ -13,6 +13,30 @@
     .container{
         margin-top: 80px;
     }
+    .btn{
+        border-radius: 15px;
+        color: white;
+        background-color: #0f6369;
+        border: none;
+    }
+    .card-body{
+        background-color: rgb(255, 255, 255);
+
+    }
+    input,select {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
 </style>
 <div class="container">
     <div class="row">
@@ -38,13 +62,13 @@
     </div>
     <div class='row'>
         <div class='col-md-3'></div>
-        <div class='card p-4 col-md-6'id='form' style=' text-align:left;' >
-            <div class="card-text" style="padding: 0;">
-                {{form.media}}
+        <div class='card-body p-4 col-md-6'id='form' style=' text-align:left;' >
+            <div class="card-text" >
+                <div >{{form.media}}</div>
                 <form  action="/my_profile" method="post" enctype="multipart/form-data">
                     {%csrf_token%}
                     {{form.as_p}}
-                    <input type="submit" class="btn btn-sm btn-default" value="update">
+                    <input type="submit" class="btn btn-sm btn-default" value="update" style='width:30%;'>
                 </form>
             </div>
         </div>

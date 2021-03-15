@@ -20,3 +20,8 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         exclude = ['user','email']
+        first_name = forms.CharField(max_length=100,
+                           widget= forms.TextInput
+                           (attrs={'class':'form-control',
+				   'id':'some_id'}))
+                   

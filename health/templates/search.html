@@ -24,9 +24,12 @@
     .btn{
         border-radius: 15px;
         color: white;
+        background-color: #0f6369;
+        border: none;
     }
     .row1{
-        background: linear-gradient(90deg, #115c58 73%, #f8f0f0 50%);
+        background: linear-gradient(90deg, #0f6369 73%, #f8f0f0 50%);
+        /* background: #0f6369; */
         padding:15vh 0;
         display: flex;
         justify-content: flex-end;
@@ -41,10 +44,10 @@
     }
   p{
     font-family:'Shippori Mincho B1', serif;;
-    font-size:"24px";
+    font-size:17px;
   }
 </style>
-<div class='container'><br><br>
+<div class='container'>
     <div class='row'>
         <div class='col-md-1'></div>
         <div class='col-md-9'>         
@@ -61,7 +64,7 @@
                     </div>
     
             </div>
-        </div></div></div><br><br>
+        </div></div></div>
         {% if nearest %}
         <h5><b>Nearest pharmacies with {{drug.name}}</b></h5><br>
         <div class='row '>
