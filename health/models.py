@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 from django.db.models.signals import post_save
 import datetime as dt
-# from django.contrib.gis.db import models  
+
 class Location(models.Model):
     name=models.CharField(max_length=50)
 
@@ -109,15 +109,3 @@ class Profile(models.Model):
     def save_profile(self):
         self.save()
 
-# class Activity(models.Model):                                                   
-#         owner = models.ForeignKey(User,blank = True, null = True, on_delete=models.CASCADE)               
-#         name = models.CharField(max_length = 100,blank = False)                 
-#         about = models.TextField(max_length = 500, blank = False)               
-#         location = models.ForeignKey(Location, blank = True, null = True, on_delete=models.CASCADE)       
-#         pharmacy = models.ManyToManyField(Pharmacy, blank = True)               
-#         status = models.BooleanField(default = False)                           
-#         deleted = models.BooleanField(default = False)                          
-#         createdAt = models.DateTimeField(auto_now_add=True)                     
-
-#         def __unicode__(self):                                                  
-#                 return self.name
