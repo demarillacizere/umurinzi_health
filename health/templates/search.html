@@ -46,6 +46,7 @@
     font-family:'Shippori Mincho B1', serif;;
     font-size:17px;
   }
+
 </style>
 <div class='container'>
     <div class='row'>
@@ -66,7 +67,7 @@
             </div>
         </div></div></div>
         {% if nearest %}
-        <h5><b>Nearest pharmacies with {{drug.name}}</b></h5><br>
+        <h5><b><u>Nearest pharmacies with {{drug.name}}</u></b></h5><br>
         <div class='row '>
         
             {% for pharmacy in nearest %}
@@ -82,7 +83,7 @@
             {% endfor%}
         </div>
         {% endif %}<br>
-        <h5 ><b>Other Pharmacies with {{drug.name}}</b></h5><br>
+        <h5 ><b><u>Other Pharmacies with {{drug.name}}</u></b></h5><br>
         <div class='row'>
             {% for pharmacy in others %}
                 <div class='col-lg-3 text-center'>
